@@ -1,1 +1,67 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		function Calculate(){
+			var a = document.getElementById("length").value;
+			var b = document.getElementById("length1").value;
+			if(a == "km" && b == "m")
+			{
+				let c = document.getElementById("input1").value;
+				document.getElementById("input3").value = parseInt(c)*1000;
+			}
+			else if(a == "m" && b == "km")
+			{
+				let c = document.getElementById("input1").value;
+				document.getElementById("input3").value = parseInt(c)/1000;
+			}
+		}
+		
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $(".Link1").click(function(){
+	    $(".fir").toggle();
+	  });
+	});
+	</script>
+</head>
+	<body>
+		<button type="button" class="Link1">Length</button>
+			<div class="fir">
+				<div><input type="text" id="input1" class="sam"></input>
+						<select name="select" class="drop" id="length">
+							  <option value="parsec">ps</option>
+							  <option value="AU">AU</option>
+							  <option value="light year">ly</option>
+							  <option value="mile">mile</option>	
+							  <option value="km">km</option>
+							  <option value="m">m</option>
+							  <option value="cm">cm</option>
+							  <option value="mm">mm</option>
+							  <option value="foot">foot</option>
+							  <option value="inch">inch</option>
+							  <option value="yard">yard</option>
+						</select>
+				</div>
+				<div class="second"><input type="text" class="sam" id="input3"></input>	
+						<select name="select1" class="drop" id="length1">
+							  <option value="parsec">ps</option>
+							  <option value="AU">AU</option>
+							  <option value="light year">ly</option>
+							  <option value="mile">mile</option>	
+							  <option value="km">km</option>
+							  <option value="m">m</option>
+							  <option value="cm">cm</option>
+							  <option value="mm">mm</option>
+							  <option value="foot">foot</option>
+							  <option value="inch">inch</option>
+							  <option value="yard">yard</option>
+						</select>
+				</div>
+					<input type="button" class="but" id="submit" value="Submit" onclick="Calculate()"></button>
+			</div>
+	</body>
+</html>
