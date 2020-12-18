@@ -1,41 +1,31 @@
-body{
-	/*background: url("mw1.jpg");
-	background-size: 100% 400%;
-	background-repeat: no-repeat;*/
-	background-color:black;
-}
-
-.fir{
-	padding-top: 10px;
-	margin-left: 50px;
-}
-
-.Link1{
-	margin-left: 50px;
-	width:220px;
-	background-color: #c0c1c2;
-	color: black;
-}
-
-.second{
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-.sam{
-	height: 30px;
-	border-color: green;
-}
-
-.drop{
+.Drs{
 	height: 35px;
-	border-color: green;	
+	width: 100px;
+	background-color: #010126;
+	color:white;
+	border-radius : 0px;
+
 }
 
-.but{
-	width:220px;
-	background-color: #1d60a3;
-	height: 45px;
+.dels{
+	height: 35px;
+	width: 100px;
+	background-color: #010126;
 	color:white;
 
+}
+
+input{
+	margin-top: 10px;
+	height: 30px;
+	width: 150px;
+	/*background-color: #010126;*/
+	color: black;	
+}
+
+.forDesign{
+	height: 30px;
+	width: 265px;
+	background-color: #010126;
+	color: white;
 }
