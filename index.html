@@ -1,67 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<link rel="stylesheet" href="style.css">
-	<script>
-		function Calculate(){
-			var a = document.getElementById("length").value;
-			var b = document.getElementById("length1").value;
-			if(a == "km" && b == "m")
-			{
-				let c = document.getElementById("input1").value;
-				document.getElementById("input3").value = parseInt(c)*1000;
-			}
-			else if(a == "m" && b == "km")
-			{
-				let c = document.getElementById("input1").value;
-				document.getElementById("input3").value = parseInt(c)/1000;
-			}
-		}
-		
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
-	$(document).ready(function(){
-	  $(".Link1").click(function(){
-	    $(".fir").toggle();
-	  });
-	});
-	</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-3.5.1.min.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+    <script>
+       var countIt = 0;
+       $(document).ready(function(){
+
+				       	
+
+	          $("#clicking").click(function(){
+	                var toGetShape = document.getElementById('selec').value;
+	                if(toGetShape == "square")
+	                {
+	                var a = "<div class='square1 forCount' style='height: 50px;width: 50px;background-color: #555;padding:5px;margin-top: 5px; margin-bottom:5px;'></div>"
+	                $("#ShapeDesign").append(a);
+	                countIt += 1;
+	                document.getElementById("counts").value = countIt; 
+	            	$(".square1").draggable();
+	            	}
+	            	else if(toGetShape == "rectangle"){
+	            		var a = "<div class='rectangle1 forCount' style='height: 50px; width: 75px; background-color: #555;padding:5px;margin-top: 5px; margin-bottom:5px;'></div>"
+			            $("#ShapeDesign").append(a);
+	                	countIt += 1;
+	                document.getElementById("counts").value = countIt;
+	                $(".rectangle1").draggable();
+	            	}
+	            	else if(toGetShape == "circle"){
+	            		var a = "<div class='circle1 forCount' style='background-color: #555;width: 75px;height: 75px;border-radius: 50%;padding:5px;margin-top: 5px; margin-bottom:5px;'></div>"
+	                	$("#ShapeDesign").append(a);
+	                	countIt += 1;
+	                document.getElementById("counts").value = countIt;
+	            	$(".circle1").draggable();
+	            	}
+	            	else if(toGetShape == "oval"){
+	            		var a = "<div class='oval1 forCount' style='background-color: #555;width: 100px;height: 75px;border-radius: 50%;padding:5px;margin-top: 5px; margin-bottom:5px;'></div>"
+	                	$("#ShapeDesign").append(a);
+	                	countIt += 1;
+	                	document.getElementById("counts").value = countIt;
+	                	$(".oval1").draggable();
+	            	}
+
+	          });
+
+	          $("#del").click(function(){
+	          	var pos = document.getElementById("box").value;
+	          	var conv = parseInt(pos);
+	          	conv = conv - 1;
+	          	document.getElementById("box").value = "";
+	              
+	   				if(conv <= countIt && conv >= 0){
+	                	$(".forCount").eq(conv).remove();
+	                    countIt += -1;
+	                    if(countIt == -1){
+	                    	document.getElementById("counts").value = 0;	
+	                    }else{
+						document.getElementById("counts").value = countIt;	                
+	             		}
+	              }
+	              else{
+	              	alert("You're trying to delete something which is not there.");
+	              }
+
+	              
+	          });
+	    
+		});
+    </script>
 </head>
-	<body>
-		<button type="button" class="Link1">Length</button>
-			<div class="fir">
-				<div><input type="text" id="input1" class="sam"></input>
-						<select name="select" class="drop" id="length">
-							  <option value="parsec">ps</option>
-							  <option value="AU">AU</option>
-							  <option value="light year">ly</option>
-							  <option value="mile">mile</option>	
-							  <option value="km">km</option>
-							  <option value="m">m</option>
-							  <option value="cm">cm</option>
-							  <option value="mm">mm</option>
-							  <option value="foot">foot</option>
-							  <option value="inch">inch</option>
-							  <option value="yard">yard</option>
-						</select>
-				</div>
-				<div class="second"><input type="text" class="sam" id="input3"></input>	
-						<select name="select1" class="drop" id="length1">
-							  <option value="parsec">ps</option>
-							  <option value="AU">AU</option>
-							  <option value="light year">ly</option>
-							  <option value="mile">mile</option>	
-							  <option value="km">km</option>
-							  <option value="m">m</option>
-							  <option value="cm">cm</option>
-							  <option value="mm">mm</option>
-							  <option value="foot">foot</option>
-							  <option value="inch">inch</option>
-							  <option value="yard">yard</option>
-						</select>
-				</div>
-					<input type="button" class="but" id="submit" value="Submit" onclick="Calculate()"></button>
-			</div>
-	</body>
+
+<body>
+		<select name="shape" id="selec" class="forDesign">
+			<option id="sq" value="square">Square</option>
+			<option id="rec" value="rectangle">Rectangle</option>
+			<option id="cir" value="circle">Circle</option>
+			<option id="ov" value="oval">Oval</option>
+		</select>
+
+
+		<button id="clicking" class="Drs" value="Draw">Draw</button>
+		<div>
+		<input type="text" id="counts" value="" placeholder="Number of shapes"></input>
+        
+        </div>
+        <div>
+        <input type="text" id="box" value="" placeholder="Enter Position"></input>
+        <button id="del" class="dels">Delete</button>
+        </div>
+        <div id="ShapeDesign">
+        </div>
+
+</body>
+
 </html>
+
+
